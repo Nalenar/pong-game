@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+body {
+  background: black;
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Press Start 2P', cursive;
+}
+
+#counter {
+  color: white;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+#goal {
+  position: absolute;
+  color: white;
+  
+}
