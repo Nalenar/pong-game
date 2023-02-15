@@ -30,6 +30,9 @@ class Peddle {
   }
 }
 
+let counterRight = 0;
+let counterLeft = 0;
+
 class Ball {
   constructor({ position }) {
     this.position = position;
@@ -49,6 +52,7 @@ class Ball {
 
   update() {
     this.draw();
+    this.checkForGoal();
 
     const rightSide = this.position.x + this.width + this.velocity.x;
     const leftSide = this.position.x + this.velocity.x;
@@ -94,6 +98,29 @@ class Ball {
       y: Math.random() - 0.5 >= 0 ? -2 : 2,
     };
     this.velocity = { x: direction.x, y: direction.y };
+  }
+
+  checkForGoal() {
+    let goalLeft = false;
+    let goalRight = false;
+
+    if (this.position.x + this.width + this.velocity.x < 0) {
+      this.velocity = { x: 0, y: 0 };
+      goalRight = true;
+    } else if (this.position.x + this.velocity.x > canvas.width) {
+      this.velocity = { x: 0, y: 0 };
+      goalLeft = true;
+    }
+
+    if (goalRight) {
+      counterRight++;
+      document.querySelector("#rightCounter").innerHTML = counterRight;
+      document.querySelector('#goal').style.color = 'white'
+    } else if (goalLeft) {
+      counterLeft++;
+      document.querySelector("#leftCounter").innerHTML = counterLeft;
+      document.querySelector('#goal').style.color = 'white'
+    }
   }
 }
 
