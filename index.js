@@ -83,6 +83,18 @@ class Ball {
     this.position.x += this.velocity.x;
     this.position.y += this.velocity.y;
   }
+
+  reset() {
+    this.position = {
+      x: canvas.width / 2,
+      y: canvas.height / 2,
+    };
+    const direction = {
+      x: Math.random() - 0.5 >= 0 ? -2 : 2,
+      y: Math.random() - 0.5 >= 0 ? -2 : 2,
+    };
+    this.velocity = { x: direction.x, y: direction.y };
+  }
 }
 
 const ball = new Ball({
@@ -161,6 +173,9 @@ window.addEventListener("keydown", (event) => {
     case "ы":
       keys.s.pressed = true;
       peddle1.lastKey = "s";
+      break;
+    case "Enter":
+      ball.reset();
       break;
   }
 
