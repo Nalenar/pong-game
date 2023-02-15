@@ -103,9 +103,11 @@ class Ball {
     if (goalRight) {
       counterRight++;
       document.querySelector("#rightCounter").innerHTML = counterRight;
+      document.querySelector('#goal').style.color = 'white'
     } else if (goalLeft) {
       counterLeft++;
       document.querySelector("#leftCounter").innerHTML = counterLeft;
+      document.querySelector('#goal').style.color = 'white'
     }
   }
 }
