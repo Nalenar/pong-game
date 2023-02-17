@@ -4,11 +4,11 @@ body {
   background: black;
   margin: 0;
   overflow: hidden;
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Press Start 2P", cursive;
+  color: white;
 }
 
 #counter {
-  color: white;
   position: absolute;
   top: 0;
   right: 0;
@@ -21,12 +21,27 @@ body {
 
 #goal {
   position: absolute;
-  color: black;
   top: 0;
-  bottom: 0;
+  bottom: 20px;
   left: 0;
   right: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+#text {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 100px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+#text > span {
+  font-style: italic;
+  padding: 15px;
 }

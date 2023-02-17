@@ -89,15 +89,18 @@ class Ball {
   }
 
   reset() {
+    // document.querySelector('#goal').style.color = 'black'
     this.position = {
       x: canvas.width / 2,
       y: canvas.height / 2,
     };
-    const direction = {
-      x: Math.random() - 0.5 >= 0 ? -2 : 2,
-      y: Math.random() - 0.5 >= 0 ? -2 : 2,
-    };
-    this.velocity = { x: direction.x, y: direction.y };
+    setTimeout(() => {
+      const direction = {
+        x: Math.random() - 0.5 >= 0 ? -2 : 2,
+        y: Math.random() - 0.5 >= 0 ? -2 : 2,
+      };
+      this.velocity = { x: direction.x, y: direction.y };
+    }, 1000);
   }
 
   checkForGoal() {
@@ -115,11 +118,11 @@ class Ball {
     if (goalRight) {
       counterRight++;
       document.querySelector("#rightCounter").innerHTML = counterRight;
-      document.querySelector('#goal').style.color = 'white'
+      goal(true);
     } else if (goalLeft) {
       counterLeft++;
       document.querySelector("#leftCounter").innerHTML = counterLeft;
-      document.querySelector('#goal').style.color = 'white'
+      goal(true);
     }
   }
 }
@@ -203,6 +206,7 @@ window.addEventListener("keydown", (event) => {
       break;
     case "Enter":
       ball.reset();
+      goal(false);
       break;
   }
 
@@ -242,3 +246,16 @@ window.addEventListener("keyup", (event) => {
       break;
   }
 });
+
+document.querySelector("#goal").style.visibility = "hidden";
+document.querySelector("#text").style.visibility = "hidden";
+
+function goal(bool) {
+  if (bool) {
+    document.querySelector("#goal").style.visibility = "visible";
+    document.querySelector("#text").style.visibility = "visible";
+  } else {
+    document.querySelector("#goal").style.visibility = "hidden";
+    document.querySelector("#text").style.visibility = "hidden";
+  }
+}
